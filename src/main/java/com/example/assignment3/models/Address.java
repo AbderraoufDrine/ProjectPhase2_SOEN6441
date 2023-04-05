@@ -109,17 +109,18 @@ public abstract class Address {
      * Build the address information
      * for use
      */
-    public void BuildAddress(){
-        System.out.println("Please enter the city name");
-        setCity(input.nextLine());
-        System.out.println("Please enter the street name");
-        setStreetName(input.nextLine());
-        System.out.println("Please enter the street number");
-        setStreetNumber(input.nextInt());
-        System.out.println("Please enter the province");
-        setProvince(input.next());
-        System.out.println("Please enter the postal code");
-        setPostalCode(input.next());
+    public void BuildAddress(int streetNumber, String streetName, String city,
+                             String province,String postalCode,int unitNumber){
+//        System.out.println("Please enter the city name");
+        setCity(city);
+//        System.out.println("Please enter the street name");
+        setStreetName(streetName);
+//        System.out.println("Please enter the street number");
+        setStreetNumber(streetNumber);
+//        System.out.println("Please enter the province");
+        setProvince(province);
+//        System.out.println("Please enter the postal code");
+        setPostalCode(postalCode);
 
 
     }

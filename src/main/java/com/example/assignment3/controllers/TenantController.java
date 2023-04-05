@@ -79,13 +79,14 @@ public class TenantController {
      * display all the tenants in the database
      * These tenants may not have a lease
      */
-    public void displayTenants(){
-        try {
-            for (Tenant t : allTenants())
-                System.out.println(t);
-        }
-        catch (Exception e){
-            System.out.println("It seems something is wrong with this operation");
-        }
+    public ArrayList<Tenant> displayTenants(){
+        return allTenants();
+//        try {
+//            for (Tenant t : allTenants())
+//                System.out.println(t);
+//        }
+//        catch (Exception e){
+//            System.out.println("It seems something is wrong with this operation");
+//        }
     }
 }

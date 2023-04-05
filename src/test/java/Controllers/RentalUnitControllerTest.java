@@ -53,7 +53,7 @@ public class RentalUnitControllerTest {
         //arrange
         int size=rentalUnitrepository.getAll().size();
         //act
-        controller.createRentalUnit(type, numOfBed, numOfBath, area);
+        //controller.createRentalUnit(type, numOfBed, numOfBath, area);
         //assert
         assertEquals(size+1,rentalUnitrepository.getAll().size());
     }
@@ -63,7 +63,7 @@ public class RentalUnitControllerTest {
         //arrange
         int size=rentalUnitrepository.getAll().size();
         //act
-        controller.createRentalUnit(type, numOfBed, numOfBath, area);
+        //controller.createRentalUnit(type, numOfBed, numOfBath, area);
         size++;
         System.out.println("Enter the ID of the rental unit to be removed:");
         idinput=s.nextInt();

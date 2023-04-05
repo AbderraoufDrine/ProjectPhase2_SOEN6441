@@ -28,10 +28,12 @@ public class ApartmentAddress extends Address{
      * of the apartment address
      */
     @Override
-    public void BuildAddress() {
-        super.BuildAddress();
-        System.out.println("Please enter the unitNumber");
-        setUnitNumber(Integer.parseInt(input.next()));
+    public void BuildAddress(int streetNumber, String streetName, String city,
+                             String province,String postalCode,int unitNumber) {
+        super.BuildAddress(streetNumber,streetName, city,
+                 province,postalCode,unitNumber);
+//        System.out.println("Please enter the unitNumber");
+        setUnitNumber(unitNumber);
 
     }
 

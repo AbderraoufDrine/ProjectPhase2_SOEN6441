@@ -8,6 +8,7 @@ import com.example.assignment3.models.Tenant;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 /**
  * This is the lease controller
@@ -37,7 +38,7 @@ public class LeaseController {
         try {
             obj.setTenant(tenantRepository.get(email));
             obj.setRentalUnit(rentalUnitRepository.get(Id));
-            String dateFormat = "dd/mm/yyyy";
+            String dateFormat = "dd-mm-yyyy";
             obj.setStartDate(new SimpleDateFormat(dateFormat).parse(startDate));
             obj.setEndDate(new SimpleDateFormat(dateFormat).parse(endDate));
             obj.setPrice(rent);
@@ -53,15 +54,18 @@ public class LeaseController {
 
     /**
      * display all the leases in the database
+     *
+     * @return
      */
-    public void displayLeases(){
-        try {
-            for (Lease l : leaseRepository.getAll())
-                System.out.println(l);
-        }
-        catch (Exception e){
-            System.out.println("It seems something went wrong");
-        }
+    public ArrayList<Lease> displayLeases(){
+//        try {
+//            for (Lease l : leaseRepository.getAll())
+//                System.out.println(l);
+//        }
+//        catch (Exception e){
+//            System.out.println("It seems something went wrong");
+//        }
+        return leaseRepository.getAll();
 
     }
 

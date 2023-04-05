@@ -36,12 +36,14 @@ public class RentalUnitController {
      * create a unit and
      * store it in the database
      */
-    public void createRentalUnit (String type, int numOfBed, int numOfBath, int area){
+    public void createRentalUnit (String type, int numOfBed, int numOfBath, int area,
+                                  int streetNumber, String streetName, String city,
+                                  String province,String postalCode,int unitNumber){
         try {
             RentalUnit obj = null;
             obj = factory.getInstance(type);
             obj.setAddress(adFactory.getInstance(type));
-            obj.getAddress().BuildAddress();
+            obj.getAddress().BuildAddress(streetNumber,streetName,city,province,postalCode,unitNumber);
             obj.setBedrooms(numOfBed);
             obj.setBathrooms(numOfBath);
             obj.setArea(area);
@@ -105,42 +107,50 @@ public class RentalUnitController {
     /**
      * display all the units in the database
      */
-    public void displayAllUnits(){
-        try {
-            for (RentalUnit r : repository.getAll())
-                System.out.println(r);
-        }
-        catch (Exception e){
-            System.out.println("It seems something went wrong");
-        }
+    public ArrayList<RentalUnit> displayAllUnits(){
+//        try {
+//            for (RentalUnit r : repository.getAll())
+//                System.out.println(r);
+//        }
+//        catch (Exception e){
+//            System.out.println("It seems something went wrong");
+//        }
+        return repository.getAll();
 
     }
 
     /**
      * display all the rented units in the database
+     *
+     * @return
      */
-    public void displayRentedUnits(){
-        try {
-            for (RentalUnit r : repository.getAllRented())
-                System.out.println(r);
-        }
-        catch (Exception e){
-            System.out.println("It seems something went wrong");
-        }
+    public ArrayList<RentalUnit> displayRentedUnits(){
+//        try {
+//            for (RentalUnit r : repository.getAllRented())
+//                System.out.println(r);
+//        }
+//        catch (Exception e){
+//            System.out.println("It seems something went wrong");
+//        }
+        return repository.getAllRented();
 
     }
 
     /**
      * display all the vacant units in the database
+     *
+     * @return
      */
-    public void vacantUnits(){
-        try {
-            for (RentalUnit r : repository.getAllVacant())
-                System.out.println(r);
-        }
-        catch (Exception e){
-            System.out.println("It seems something went wrong");
-        }
+    public ArrayList<RentalUnit> vacantUnits(){
+//        try {
+//            for (RentalUnit r : repository.getAllVacant())
+//                System.out.println(r);
+//        }
+//        catch (Exception e){
+//            System.out.println("It seems something went wrong");
+//        }
+        return repository.getAllVacant();
+
 
     }
 

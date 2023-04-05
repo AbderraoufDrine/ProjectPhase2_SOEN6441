@@ -59,7 +59,7 @@ public class ViewController {
                                 int numberBathrooms = Integer.parseInt(input.nextLine());
                                 System.out.println("Please Enter the area:");
                                 int area = Integer.parseInt(input.nextLine());
-                                rentalUnitController.createRentalUnit("apartment",numberBedrooms,numberBathrooms,area);
+                                //rentalUnitController.createRentalUnit("apartment",numberBedrooms,numberBathrooms,area);
                                 break;
 
                             case 2:
@@ -69,7 +69,7 @@ public class ViewController {
                                 int numberBathrooms_ = Integer.parseInt(input.nextLine());
                                 System.out.println("Please Enter the area:");
                                 int area_ = Integer.parseInt(input.nextLine());
-                                rentalUnitController.createRentalUnit("house",numberBedrooms_,numberBathrooms_,area_);
+                                //rentalUnitController.createRentalUnit("house",numberBedrooms_,numberBathrooms_,area_);
                                 break;
                             case 3:
                                 System.out.println("Going back to main menu...");
