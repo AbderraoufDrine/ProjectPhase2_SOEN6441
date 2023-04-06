@@ -415,12 +415,32 @@ public class HelloApplication extends Application {
                 tenantListView.getItems().add(tenantInfo);
             }
 
-            // Create a new stage to show the tenants list
+            // Create the button to refresh the list of tenants
+            Button refreshTenantsBtn = new Button("Refresh");
+
+            // Create a VBox to hold the ListView and the Refresh button
+            VBox tenantBox = new VBox(10, tenantListView, refreshTenantsBtn);
+            tenantBox.setPadding(new Insets(10));
+
+            // Add event handler to the Refresh button
+            refreshTenantsBtn.setOnAction(event -> {
+                        // Clear the ListView
+                        tenantListView.getItems().clear();
+
+                        // Refresh the list of tenants and add them to the ListView
+                        ArrayList<Tenant> tenants2 = tenantController.displayTenants();
+                        for (Tenant tenant : tenants2) {
+                            String tenantInfo = tenant.getName() + " - " + tenant.getEmail();
+                            tenantListView.getItems().add(tenantInfo);
+                        }
+            });
+
+            //Create a new stage to show the tenants list
             Stage tenantsStage = new Stage();
             tenantsStage.setTitle("Tenants");
-            tenantsStage.initModality(Modality.APPLICATION_MODAL);
+            //tenantsStage.initModality(Modality.APPLICATION_MODAL);
             tenantsStage.initOwner(primaryStage);
-            tenantsStage.setScene(new Scene(tenantListView, 300, 300));
+            tenantsStage.setScene(new Scene(tenantBox, 300, 300));
             tenantsStage.show();
         });
 
@@ -439,12 +459,34 @@ public class HelloApplication extends Application {
                 rentalUnitListView.getItems().add(unitInfo);
             }
 
+            // Create the button to refresh the list of tenants
+            Button refreshTenantsBtn = new Button("Refresh");
+
+            // Create a VBox to hold the ListView and the Refresh button
+            VBox Box = new VBox(10, rentalUnitListView, refreshTenantsBtn);
+            Box.setPadding(new Insets(10));
+
+            // Add event handler to the Refresh button
+            refreshTenantsBtn.setOnAction(event -> {
+                // Clear the ListView
+                rentalUnitListView.getItems().clear();
+
+                // Refresh the list of tenants and add them to the ListView
+                ArrayList<RentalUnit> units2 = rentalUnitController.displayAllUnits();
+                for (RentalUnit unit : units2) {
+                    String unitInfo = unit.toString();
+                    rentalUnitListView.getItems().add(unitInfo);
+                }
+            });
+
+
+
             // Create a new stage to show the tenants list
             Stage rentalUnitStage = new Stage();
             rentalUnitStage.setTitle("All Units");
-            rentalUnitStage.initModality(Modality.APPLICATION_MODAL);
+            //rentalUnitStage.initModality(Modality.APPLICATION_MODAL);
             rentalUnitStage.initOwner(primaryStage);
-            rentalUnitStage.setScene(new Scene(rentalUnitListView, 650, 325));
+            rentalUnitStage.setScene(new Scene(Box, 650, 325));
             rentalUnitStage.show();
         });
 
@@ -464,12 +506,32 @@ public class HelloApplication extends Application {
                 vacantRentalUnitListView.getItems().add(unitInfo);
             }
 
+            // Create the button to refresh the list of tenants
+            Button refreshTenantsBtn = new Button("Refresh");
+
+            // Create a VBox to hold the ListView and the Refresh button
+            VBox Box = new VBox(10, vacantRentalUnitListView, refreshTenantsBtn);
+            Box.setPadding(new Insets(10));
+
+            // Add event handler to the Refresh button
+            refreshTenantsBtn.setOnAction(event -> {
+                // Clear the ListView
+                vacantRentalUnitListView.getItems().clear();
+
+                // Refresh the list of tenants and add them to the ListView
+                ArrayList<RentalUnit> vacantUnits2 = rentalUnitController.vacantUnits();
+                for (RentalUnit unit : vacantUnits2) {
+                    String unitInfo = unit.toString();
+                    vacantRentalUnitListView.getItems().add(unitInfo);
+                }
+            });
+
             // Create a new stage to show the tenants list
             Stage rentalUnitStage = new Stage();
             rentalUnitStage.setTitle("All Units");
-            rentalUnitStage.initModality(Modality.APPLICATION_MODAL);
+            //rentalUnitStage.initModality(Modality.APPLICATION_MODAL);
             rentalUnitStage.initOwner(primaryStage);
-            rentalUnitStage.setScene(new Scene(vacantRentalUnitListView, 650, 325));
+            rentalUnitStage.setScene(new Scene(Box, 650, 325));
             rentalUnitStage.show();
         });
 
@@ -488,12 +550,33 @@ public class HelloApplication extends Application {
                 rentedRentalUnitListView.getItems().add(unitInfo);
             }
 
+            // Create the button to refresh the list of tenants
+            Button refreshTenantsBtn = new Button("Refresh");
+
+            // Create a VBox to hold the ListView and the Refresh button
+            VBox Box = new VBox(10, rentedRentalUnitListView, refreshTenantsBtn);
+            Box.setPadding(new Insets(10));
+
+            // Add event handler to the Refresh button
+            refreshTenantsBtn.setOnAction(event -> {
+                // Clear the ListView
+                rentedRentalUnitListView.getItems().clear();
+
+                // Refresh the list of tenants and add them to the ListView
+                ArrayList<RentalUnit> rentedUnits2 = rentalUnitController.displayRentedUnits();
+
+                for (RentalUnit unit : rentedUnits2) {
+                    String unitInfo = unit.toString();
+                    rentedRentalUnitListView.getItems().add(unitInfo);
+                }
+            });
+
             // Create a new stage to show the tenants list
             Stage rentalUnitStage = new Stage();
             rentalUnitStage.setTitle("All Units");
-            rentalUnitStage.initModality(Modality.APPLICATION_MODAL);
+            //rentalUnitStage.initModality(Modality.APPLICATION_MODAL);
             rentalUnitStage.initOwner(primaryStage);
-            rentalUnitStage.setScene(new Scene(rentedRentalUnitListView, 650, 325));
+            rentalUnitStage.setScene(new Scene(Box, 650, 325));
             rentalUnitStage.show();
         });
 
@@ -512,12 +595,33 @@ public class HelloApplication extends Application {
                 leaseListView.getItems().add(leaseInfo);
             }
 
+            // Create the button to refresh the list of tenants
+            Button refreshTenantsBtn = new Button("Refresh");
+
+            // Create a VBox to hold the ListView and the Refresh button
+            VBox Box = new VBox(10, leaseListView, refreshTenantsBtn);
+            Box.setPadding(new Insets(10));
+
+            // Add event handler to the Refresh button
+            refreshTenantsBtn.setOnAction(event -> {
+                // Clear the ListView
+                leaseListView.getItems().clear();
+
+                // Refresh the list of tenants and add them to the ListView
+                ArrayList<Lease> leases2 = leaseController.displayLeases();
+
+                for (Lease lease : leases2) {
+                    String leaseInfo = lease.toString();
+                    leaseListView.getItems().add(leaseInfo);
+                }
+            });
+
             // Create a new stage to show the tenants list
             Stage rentalUnitStage = new Stage();
             rentalUnitStage.setTitle("All Units");
-            rentalUnitStage.initModality(Modality.APPLICATION_MODAL);
+            //rentalUnitStage.initModality(Modality.APPLICATION_MODAL);
             rentalUnitStage.initOwner(primaryStage);
-            rentalUnitStage.setScene(new Scene(leaseListView, 650, 325));
+            rentalUnitStage.setScene(new Scene(Box, 650, 325));
             rentalUnitStage.show();
         });
 
