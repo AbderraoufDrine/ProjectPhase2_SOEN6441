@@ -14,24 +14,27 @@ import com.example.assignment3.controllers.TenantController;
 import com.example.assignment3.models.Tenant;
 
 public class DisplayTenantsView {
-    private Stage stage;
+    private final Stage stage;
 
-    public DisplayTenantsView(Stage stage) {
+    // Instantiate the TenantController
+    private final TenantRepository tenantRepository;
+
+    public DisplayTenantsView(Stage stage, TenantRepository tenantRepository) {
         this.stage = stage;
+        this.tenantRepository = tenantRepository;
+
     }
 
     public void display() {
 
-        // Instantiate the TenantController
-        TenantRepository tenantRepository = new TenantRepository();
         TenantController tenantController= new TenantController(tenantRepository);
-
         // Get the list of tenants
         ArrayList<Tenant> tenants = tenantController.displayTenants();
 
+
         // Create the ListView to display the tenants
         ListView<String> tenantListView = new ListView<>();
-
+        System.out.println("these are the the" + tenantController.displayTenants());
         // Loop through the array and add each tenant to the ListView
         for (Tenant tenant : tenants) {
             String tenantInfo = tenant.getName() + " - " + tenant.getEmail();

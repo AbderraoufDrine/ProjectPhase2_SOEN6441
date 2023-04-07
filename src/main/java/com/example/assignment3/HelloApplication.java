@@ -12,7 +12,6 @@ import com.example.assignment3.models.Lease;
 import com.example.assignment3.models.RentalUnit;
 import com.example.assignment3.models.Tenant;
 import javafx.application.Application;
-        import javafx.fxml.FXMLLoader;
         import javafx.geometry.Insets;
         import javafx.geometry.Pos;
         import javafx.scene.Scene;
@@ -21,13 +20,11 @@ import javafx.scene.layout.GridPane;
         import javafx.scene.layout.VBox;
         import javafx.scene.text.Font;
         import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.text.ParseException;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 
 public class HelloApplication extends Application {
@@ -42,7 +39,7 @@ public class HelloApplication extends Application {
         RentalUnitController rentalUnitController = new RentalUnitController(rentalUnitRepository,tenantRepository);
         LeaseController leaseController = new LeaseController(tenantRepository,rentalUnitRepository,leaseRepository);
 
-        Scanner input = new Scanner(System.in);
+        //Scanner input = new Scanner(System.in);
 
         // Create a greeting message
         Text greeting = new Text("Welcome to My Property Management System!");
@@ -401,202 +398,33 @@ public class HelloApplication extends Application {
         });
 
         displayTenantsBtn.setOnAction(e -> {
-
-            DisplayTenantsView displayTenantsView = new DisplayTenantsView(primaryStage);
+            DisplayTenantsView displayTenantsView = new DisplayTenantsView(primaryStage,tenantRepository);
             displayTenantsView.display();
-
         });
 
         displayAllUnitsBtn.setOnAction(e -> {
-
-            ArrayList<RentalUnit> units = rentalUnitController.displayAllUnits();
-            // Create the ListView to display the tenants
-            ListView<String> rentalUnitListView = new ListView<>();
-
-            // Clear the ListView
-            rentalUnitListView.getItems().clear();
-
-            // Loop through the array and add each tenant to the ListView
-            for (RentalUnit unit : units) {
-                String unitInfo = unit.toString();
-                rentalUnitListView.getItems().add(unitInfo);
-            }
-
-            // Create the button to refresh the list of tenants
-            Button refreshTenantsBtn = new Button("Refresh");
-
-            // Create a VBox to hold the ListView and the Refresh button
-            VBox Box = new VBox(10, rentalUnitListView, refreshTenantsBtn);
-            Box.setPadding(new Insets(10));
-
-            // Add event handler to the Refresh button
-            refreshTenantsBtn.setOnAction(event -> {
-                // Clear the ListView
-                rentalUnitListView.getItems().clear();
-
-                // Refresh the list of tenants and add them to the ListView
-                ArrayList<RentalUnit> units2 = rentalUnitController.displayAllUnits();
-                for (RentalUnit unit : units2) {
-                    String unitInfo = unit.toString();
-                    rentalUnitListView.getItems().add(unitInfo);
-                }
-            });
-
-
-
-            // Create a new stage to show the tenants list
-            Stage rentalUnitStage = new Stage();
-            rentalUnitStage.setTitle("All Units");
-            //rentalUnitStage.initModality(Modality.APPLICATION_MODAL);
-            rentalUnitStage.initOwner(primaryStage);
-            rentalUnitStage.setScene(new Scene(Box, 650, 325));
-            rentalUnitStage.show();
+            DisplayAllUnitsView DisplayAllUnitsView = new DisplayAllUnitsView(primaryStage,tenantRepository,rentalUnitRepository);
+            DisplayAllUnitsView.display();
         });
 
 
         displayVacantUnitsBtn.setOnAction(e -> {
-
-            ArrayList<RentalUnit> vacantUnits = rentalUnitController.vacantUnits();
-            // Create the ListView to display the tenants
-            ListView<String> vacantRentalUnitListView = new ListView<>();
-
-            // Clear the ListView
-            vacantRentalUnitListView.getItems().clear();
-
-            // Loop through the array and add each tenant to the ListView
-            for (RentalUnit unit : vacantUnits) {
-                String unitInfo = unit.toString();
-                vacantRentalUnitListView.getItems().add(unitInfo);
-            }
-
-            // Create the button to refresh the list of tenants
-            Button refreshTenantsBtn = new Button("Refresh");
-
-            // Create a VBox to hold the ListView and the Refresh button
-            VBox Box = new VBox(10, vacantRentalUnitListView, refreshTenantsBtn);
-            Box.setPadding(new Insets(10));
-
-            // Add event handler to the Refresh button
-            refreshTenantsBtn.setOnAction(event -> {
-                // Clear the ListView
-                vacantRentalUnitListView.getItems().clear();
-
-                // Refresh the list of tenants and add them to the ListView
-                ArrayList<RentalUnit> vacantUnits2 = rentalUnitController.vacantUnits();
-                for (RentalUnit unit : vacantUnits2) {
-                    String unitInfo = unit.toString();
-                    vacantRentalUnitListView.getItems().add(unitInfo);
-                }
-            });
-
-            // Create a new stage to show the tenants list
-            Stage rentalUnitStage = new Stage();
-            rentalUnitStage.setTitle("All Units");
-            //rentalUnitStage.initModality(Modality.APPLICATION_MODAL);
-            rentalUnitStage.initOwner(primaryStage);
-            rentalUnitStage.setScene(new Scene(Box, 650, 325));
-            rentalUnitStage.show();
+            DisplayAllVacantUnitsView DisplayAllVacantUnitsView = new DisplayAllVacantUnitsView(primaryStage,tenantRepository,rentalUnitRepository);
+            DisplayAllVacantUnitsView.display();
         });
 
         displayRentedUnitsBtn.setOnAction(e -> {
-
-            ArrayList<RentalUnit> rentedUnits = rentalUnitController.displayRentedUnits();
-            // Create the ListView to display the tenants
-            ListView<String> rentedRentalUnitListView = new ListView<>();
-
-            // Clear the ListView
-            rentedRentalUnitListView.getItems().clear();
-
-            // Loop through the array and add each tenant to the ListView
-            for (RentalUnit unit : rentedUnits) {
-                String unitInfo = unit.toString();
-                rentedRentalUnitListView.getItems().add(unitInfo);
-            }
-
-            // Create the button to refresh the list of tenants
-            Button refreshTenantsBtn = new Button("Refresh");
-
-            // Create a VBox to hold the ListView and the Refresh button
-            VBox Box = new VBox(10, rentedRentalUnitListView, refreshTenantsBtn);
-            Box.setPadding(new Insets(10));
-
-            // Add event handler to the Refresh button
-            refreshTenantsBtn.setOnAction(event -> {
-                // Clear the ListView
-                rentedRentalUnitListView.getItems().clear();
-
-                // Refresh the list of tenants and add them to the ListView
-                ArrayList<RentalUnit> rentedUnits2 = rentalUnitController.displayRentedUnits();
-
-                for (RentalUnit unit : rentedUnits2) {
-                    String unitInfo = unit.toString();
-                    rentedRentalUnitListView.getItems().add(unitInfo);
-                }
-            });
-
-            // Create a new stage to show the tenants list
-            Stage rentalUnitStage = new Stage();
-            rentalUnitStage.setTitle("All Units");
-            //rentalUnitStage.initModality(Modality.APPLICATION_MODAL);
-            rentalUnitStage.initOwner(primaryStage);
-            rentalUnitStage.setScene(new Scene(Box, 650, 325));
-            rentalUnitStage.show();
+            DisplayAllRentedUnitsView DisplayAllRentedUnitsView = new DisplayAllRentedUnitsView(primaryStage,tenantRepository,rentalUnitRepository);
+            DisplayAllRentedUnitsView.display();
         });
 
         displayAllLeasesbtn.setOnAction(e -> {
-
-            ArrayList<Lease> leases = leaseController.displayLeases();
-            // Create the ListView to display the tenants
-            ListView<String> leaseListView = new ListView<>();
-
-            // Clear the ListView
-            leaseListView.getItems().clear();
-
-            // Loop through the array and add each tenant to the ListView
-            for (Lease lease : leases) {
-                String leaseInfo = lease.toString();
-                leaseListView.getItems().add(leaseInfo);
-            }
-
-            // Create the button to refresh the list of tenants
-            Button refreshTenantsBtn = new Button("Refresh");
-
-            // Create a VBox to hold the ListView and the Refresh button
-            VBox Box = new VBox(10, leaseListView, refreshTenantsBtn);
-            Box.setPadding(new Insets(10));
-
-            // Add event handler to the Refresh button
-            refreshTenantsBtn.setOnAction(event -> {
-                // Clear the ListView
-                leaseListView.getItems().clear();
-
-                // Refresh the list of tenants and add them to the ListView
-                ArrayList<Lease> leases2 = leaseController.displayLeases();
-
-                for (Lease lease : leases2) {
-                    String leaseInfo = lease.toString();
-                    leaseListView.getItems().add(leaseInfo);
-                }
-            });
-
-            // Create a new stage to show the tenants list
-            Stage rentalUnitStage = new Stage();
-            rentalUnitStage.setTitle("Leases");
-            //rentalUnitStage.initModality(Modality.APPLICATION_MODAL);
-            rentalUnitStage.initOwner(primaryStage);
-            rentalUnitStage.setScene(new Scene(Box, 650, 325));
-            rentalUnitStage.show();
+            DisplayAllLeasesView DisplayAllLeasesView = new DisplayAllLeasesView(primaryStage,tenantRepository,leaseRepository);
+            DisplayAllLeasesView.display();
         });
-
 
         // Handle exit button click event
         exitBtn.setOnAction(event -> primaryStage.close());
-    }
-    public static String reverseString(String str) {
-        if (str.isEmpty()) {
-            return str;
-        }
-        return reverseString(str.substring(1)) + str.charAt(0);
     }
 
     public static void main(String[] args) {
