@@ -402,46 +402,9 @@ public class HelloApplication extends Application {
 
         displayTenantsBtn.setOnAction(e -> {
 
-            ArrayList<Tenant> tenants = tenantController.displayTenants();
-            // Create the ListView to display the tenants
-            ListView<String> tenantListView = new ListView<>();
+            DisplayTenantsView displayTenantsView = new DisplayTenantsView(primaryStage);
+            displayTenantsView.display();
 
-            // Clear the ListView
-            tenantListView.getItems().clear();
-
-            // Loop through the array and add each tenant to the ListView
-            for (Tenant tenant : tenants) {
-                String tenantInfo = tenant.getName() + " - " + tenant.getEmail();
-                tenantListView.getItems().add(tenantInfo);
-            }
-
-            // Create the button to refresh the list of tenants
-            Button refreshTenantsBtn = new Button("Refresh");
-
-            // Create a VBox to hold the ListView and the Refresh button
-            VBox tenantBox = new VBox(10, tenantListView, refreshTenantsBtn);
-            tenantBox.setPadding(new Insets(10));
-
-            // Add event handler to the Refresh button
-            refreshTenantsBtn.setOnAction(event -> {
-                        // Clear the ListView
-                        tenantListView.getItems().clear();
-
-                        // Refresh the list of tenants and add them to the ListView
-                        ArrayList<Tenant> tenants2 = tenantController.displayTenants();
-                        for (Tenant tenant : tenants2) {
-                            String tenantInfo = tenant.getName() + " - " + tenant.getEmail();
-                            tenantListView.getItems().add(tenantInfo);
-                        }
-            });
-
-            //Create a new stage to show the tenants list
-            Stage tenantsStage = new Stage();
-            tenantsStage.setTitle("Tenants");
-            //tenantsStage.initModality(Modality.APPLICATION_MODAL);
-            tenantsStage.initOwner(primaryStage);
-            tenantsStage.setScene(new Scene(tenantBox, 300, 300));
-            tenantsStage.show();
         });
 
         displayAllUnitsBtn.setOnAction(e -> {
