@@ -30,8 +30,9 @@ public class DisplayAllUnitsView {
     public void display() {
 
         Thread thread = new Thread(() -> {
+
             // Instantiate the TenantController
-            RentalUnitController rentalUnitController = new RentalUnitController(rentalUnitRepository,tenantRepository);
+            RentalUnitController rentalUnitController = new RentalUnitController(rentalUnitRepository, tenantRepository);
 
             // Get the list of tenants
             ArrayList<RentalUnit> units = rentalUnitController.displayAllUnits();
@@ -77,7 +78,6 @@ public class DisplayAllUnitsView {
                 }
             });
         });
-
         thread.setDaemon(true);
         thread.start();
     }
