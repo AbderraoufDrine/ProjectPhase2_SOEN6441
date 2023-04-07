@@ -48,6 +48,7 @@ public class DisplayTenantsView {
         // Add the VBox to the scene
         Stage tenantsStage = new Stage();
         Scene displayTenantScene = new Scene(displayTenantsBox);
+        tenantsStage.setTitle("Tenants");
         tenantsStage.setScene(displayTenantScene);
         tenantsStage.initOwner(this.stage);
         tenantsStage.show();

@@ -581,7 +581,7 @@ public class HelloApplication extends Application {
 
             // Create a new stage to show the tenants list
             Stage rentalUnitStage = new Stage();
-            rentalUnitStage.setTitle("All Units");
+            rentalUnitStage.setTitle("Leases");
             //rentalUnitStage.initModality(Modality.APPLICATION_MODAL);
             rentalUnitStage.initOwner(primaryStage);
             rentalUnitStage.setScene(new Scene(Box, 650, 325));
