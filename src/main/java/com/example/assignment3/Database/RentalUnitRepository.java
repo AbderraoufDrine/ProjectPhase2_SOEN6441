@@ -84,16 +84,6 @@ public class RentalUnitRepository {
     }
 
     /**
-     * @return the latest unit
-     * stored in the database
-     */
-    public RentalUnit getLastInsertedUnit(){
-        int x=rentalUnitList.size();
-
-        return rentalUnitList.get(x-1);
-    }
-
-    /**
      * @return if a unit becomes
      * rented or vacant
      */

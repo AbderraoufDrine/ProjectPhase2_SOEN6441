@@ -1,6 +1,5 @@
 package com.example.assignment3.Database;
 
-import com.example.assignment3.models.Lease;
 import com.example.assignment3.models.Tenant;
 
 import java.util.ArrayList;
@@ -47,16 +46,6 @@ public class TenantRepository {
      */
     public ArrayList<Tenant> getAll(){
         return tenantArrayList;
-    }
-
-    /**
-     * @return the latest tenant
-     * stored in the database
-     */
-    public Tenant getLastInsertedUnit(){
-        int x=tenantArrayList.size();
-
-        return tenantArrayList.get(x-1);
     }
 
 }
