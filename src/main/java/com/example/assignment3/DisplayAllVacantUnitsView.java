@@ -46,7 +46,10 @@ public class DisplayAllVacantUnitsView {
 
         // Loop through the array and add each tenant to the ListView
         for (RentalUnit unit : vacantUnits) {
-            String unitInfo = unit.toString();
+            String unitInfo = "Unit ID: " + unit.getId() + "\n" + "Unit Number of bedrooms: " + unit.getBedrooms()
+                    + "\n" + "Unit Number of bathrooms: " + unit.getBathrooms() + "\n" + "Unit Area: " + unit.getArea()
+                    + "\n" + "Unit Address: " + unit.getAddress().getStreetNumber() + " " + unit.getAddress().getStreetName()
+                    + " ," + unit.getAddress().getPostalCode() + " ," + unit.getAddress().getCity() + " ," + unit.getAddress().getProvince();
             vacantRentalUnitListView.getItems().add(unitInfo);
         }
 
@@ -73,7 +76,10 @@ public class DisplayAllVacantUnitsView {
             // Refresh the list of tenants and add them to the ListView
             ArrayList<RentalUnit> vacantUnits2 = rentalUnitController.vacantUnits();
             for (RentalUnit unit : vacantUnits2) {
-                String unitInfo = unit.toString();
+                String unitInfo = "Unit ID: " + unit.getId() + "\n" + "Unit Number of bedrooms: " + unit.getBedrooms()
+                        + "\n" + "Unit Number of bathrooms: " + unit.getBathrooms() + "\n" + "Unit Area: " + unit.getArea()
+                        + "\n" + "Unit Address: " + unit.getAddress().getStreetNumber() + " " + unit.getAddress().getStreetName()
+                        + " ," + unit.getAddress().getPostalCode() + " ," + unit.getAddress().getCity() + " ," + unit.getAddress().getProvince();
                 vacantRentalUnitListView.getItems().add(unitInfo);
             }
         });

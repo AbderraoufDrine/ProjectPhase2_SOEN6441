@@ -48,7 +48,8 @@ public class DisplayAllLeasesView {
 
         // Loop through the array and add each tenant to the ListView
         for (Lease lease : leases) {
-            String leaseInfo = lease.toString();
+            String leaseInfo = "Tenant " + lease.getTenant().getName() + " is renting unit id " + lease.getRentalUnit().getId() + " for "
+                    + lease.getPrice() + "CAD" + " from " + lease.getStartDate() + " till" + lease.getEndDate();
             leaseListView.getItems().add(leaseInfo);
         }
 
@@ -75,7 +76,8 @@ public class DisplayAllLeasesView {
             ArrayList<Lease> leases2 = leaseController.displayLeases();
 
             for (Lease lease : leases2) {
-                String leaseInfo = lease.toString();
+                String leaseInfo = "Tenant " + lease.getTenant().getName() + " is renting unit id " + lease.getRentalUnit().getId() + " for "
+                        + lease.getPrice() + "CAD" + " from " + " " + lease.getStartDate().toString() + " till " + lease.getEndDate().toString();
                 leaseListView.getItems().add(leaseInfo);
             }
         });
