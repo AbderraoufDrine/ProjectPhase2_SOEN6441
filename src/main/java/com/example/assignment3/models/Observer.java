@@ -45,4 +45,9 @@ public class Observer {
     public ArrayList<String> getRegistered(){
         return potentialTenants;
     }
+    public String getLastInsertedUnit(){
+        int x=potentialTenants.size();
+
+        return potentialTenants.get(x-1);
+    }
 }
