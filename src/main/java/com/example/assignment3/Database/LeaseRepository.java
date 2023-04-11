@@ -1,6 +1,7 @@
 package com.example.assignment3.Database;
 
 import com.example.assignment3.models.Lease;
+import com.example.assignment3.models.RentalUnit;
 import com.example.assignment3.models.Tenant;
 
 import java.util.ArrayList;
@@ -65,6 +66,16 @@ public class LeaseRepository {
             if(l.getTenant().getName().equals(name))
                 obj = l.getTenant();
         return obj;
+    }
+
+    /**
+     * @return the latest lease
+     * stored in the database
+     */
+    public Lease getLastInsertedUnit(){
+        int x=leaseArrayList.size();
+
+        return leaseArrayList.get(x-1);
     }
 
 }

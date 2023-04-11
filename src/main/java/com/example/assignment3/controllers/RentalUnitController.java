@@ -169,5 +169,10 @@ public class RentalUnitController {
         }
     }
 
+    public Observer ReturnObserver()
+    {
+        return observer;
+    }
+
 
 }
