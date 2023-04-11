@@ -31,6 +31,9 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
 
+        Thread menut = Thread.currentThread();
+        menut.setName("Main Menu Thread");
+        System.out.println(menut.getName());
         LeaseRepository leaseRepository = new LeaseRepository();
         TenantRepository tenantRepository = new TenantRepository();
         RentalUnitRepository rentalUnitRepository = new RentalUnitRepository();
@@ -403,8 +406,13 @@ public class HelloApplication extends Application {
         });
 
         displayAllUnitsBtn.setOnAction(e -> {
+            Thread t = new Thread(()->{
             DisplayAllUnitsView DisplayAllUnitsView = new DisplayAllUnitsView(primaryStage,tenantRepository,rentalUnitRepository);
             DisplayAllUnitsView.display();
+            });
+            t.start();
+            t.setName("Display Properties thread");
+            System.out.println(t.getName());
         });
 
 

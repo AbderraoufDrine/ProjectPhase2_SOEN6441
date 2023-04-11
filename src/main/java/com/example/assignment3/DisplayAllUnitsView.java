@@ -29,7 +29,6 @@ public class DisplayAllUnitsView {
 
     public void display() {
 
-        Thread thread = new Thread(() -> {
 
             // Instantiate the TenantController
             RentalUnitController rentalUnitController = new RentalUnitController(rentalUnitRepository, tenantRepository);
@@ -77,8 +76,5 @@ public class DisplayAllUnitsView {
                     rentalUnitListView.getItems().add(unitInfo);
                 }
             });
-        });
-        thread.setDaemon(true);
-        thread.start();
     }
 }
