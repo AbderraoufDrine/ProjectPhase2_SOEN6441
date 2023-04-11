@@ -114,7 +114,7 @@ public class HelloApplication extends Application {
 
         // Handle add property button click event
         addPropertyBtn.setOnAction(event -> {
-
+            System.out.println(Thread.currentThread().getName());
             // Create a toggle group for the radio buttons
             ToggleGroup typeToggleGroup = new ToggleGroup();
 
@@ -271,6 +271,7 @@ public class HelloApplication extends Application {
         // Handle add tenant button click event
         addTenantBtn.setOnAction(event -> {
             // Create a grid pane for the add tenant form
+            System.out.println(Thread.currentThread().getName());
             GridPane addTenantGrid = new GridPane();
             addTenantGrid.setAlignment(Pos.CENTER);
             addTenantGrid.setHgap(10);
@@ -320,6 +321,7 @@ public class HelloApplication extends Application {
         });
 
         rentUnitBtn.setOnAction(event -> {
+            System.out.println(Thread.currentThread().getName());
             // Code to rent a unit
 
             // Create a grid pane for the rent a unit form
@@ -401,6 +403,7 @@ public class HelloApplication extends Application {
         });
 
         displayTenantsBtn.setOnAction(e -> {
+            System.out.println(Thread.currentThread().getName());
             DisplayTenantsView displayTenantsView = new DisplayTenantsView(primaryStage,tenantRepository);
             displayTenantsView.display();
         });
@@ -417,16 +420,19 @@ public class HelloApplication extends Application {
 
 
         displayVacantUnitsBtn.setOnAction(e -> {
+            System.out.println(Thread.currentThread().getName());
             DisplayAllVacantUnitsView DisplayAllVacantUnitsView = new DisplayAllVacantUnitsView(primaryStage,tenantRepository,rentalUnitRepository);
             DisplayAllVacantUnitsView.display();
         });
 
         displayRentedUnitsBtn.setOnAction(e -> {
+            System.out.println(Thread.currentThread().getName());
             DisplayAllRentedUnitsView DisplayAllRentedUnitsView = new DisplayAllRentedUnitsView(primaryStage,tenantRepository,rentalUnitRepository);
             DisplayAllRentedUnitsView.display();
         });
 
         displayAllLeasesbtn.setOnAction(e -> {
+            System.out.println(Thread.currentThread().getName());
             DisplayAllLeasesView DisplayAllLeasesView = new DisplayAllLeasesView(primaryStage,tenantRepository,leaseRepository);
             DisplayAllLeasesView.display();
         });
