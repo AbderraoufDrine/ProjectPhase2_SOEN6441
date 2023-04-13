@@ -246,7 +246,11 @@ public class HelloApplication extends Application {
                     }
 
                     // Add the property
-                    rentalUnitController.createRentalUnit(propertyType,propertyNumberBedrooms,propertyNumberBathrooms,area,propertyStreetNumber,propertyStreetName,propertyCity,propertyProvince,propertyPostalCode,propertyUnitNumber);
+                    int finalPropertyUnitNumber = propertyUnitNumber;
+                    Thread addThread = new Thread(()->{
+                    rentalUnitController.createRentalUnit(propertyType,propertyNumberBedrooms,propertyNumberBathrooms,area,propertyStreetNumber,propertyStreetName,propertyCity,propertyProvince,propertyPostalCode, finalPropertyUnitNumber);
+                    });
+                    addThread.start();
                 }
                 catch (Exception e)
                 {
@@ -312,7 +316,10 @@ public class HelloApplication extends Application {
 
 
                 // Add the new tenant to the system
+                Thread addTenant = new Thread(()->{
                 tenantController.createTenant(name,email);
+                });
+                addTenant.start();
 
                 // Close the add tenant window
                 addTenantStage.close();
@@ -381,19 +388,15 @@ public class HelloApplication extends Application {
 
 
                 // Rent the unit
-                try
-                {
-                    System.out.println(start);
-                    leaseController.rentUnit(email,rentalUnit,start,end,rent);
-                }
-                catch (ParseException e)
-                {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error - Unit not available");
-                    alert.setHeaderText("Unable to rent unit");
-                    alert.showAndWait();
-                    return;
-                }
+                System.out.println(start);
+                Thread rentThread = new Thread(()->{
+                    try {
+                        leaseController.rentUnit(email,rentalUnit,start,end,rent);
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+                rentThread.start();
 
                 // Close the rent unit window
                 rentUnitStage.close();

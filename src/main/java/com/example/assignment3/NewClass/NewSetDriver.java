@@ -58,6 +58,7 @@ public class NewSetDriver {
                 }
                 case 6:{
                     NewSet<TestBase> testClone = new NewSet<>();
+                    testClone.add(new TestBase("a", 1));
                     System.out.println("Are the sets the same? "+ test.equals(testClone));
                     break;
                 }

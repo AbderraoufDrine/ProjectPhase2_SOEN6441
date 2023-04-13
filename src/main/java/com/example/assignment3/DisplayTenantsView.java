@@ -60,12 +60,15 @@ public class DisplayTenantsView {
         // Set the action for the refresh button
         refreshTenantsBtn.setOnAction(e -> {
             tenantListView.getItems().clear();
+            Thread displayTenantsThread = new Thread(()->{
             ArrayList<Tenant> tenants2 = tenantController.displayTenants();
 
             for (Tenant tenant : tenants2) {
                 String tenantInfo = tenant.getName() + " - " + tenant.getEmail();
                 tenantListView.getItems().add(tenantInfo);
             }
+            });
+            displayTenantsThread.start();
         });
     }
 }
